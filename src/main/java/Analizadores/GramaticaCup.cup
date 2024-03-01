@@ -1,0 +1,64 @@
+package Analizadores;
+import java_cup.runtime.*;
+
+/*terminales*/
+terminal SELECCIONAR, EN, FILTRAR, INSERTAR, ACTUALIZAR, ASIGNAR, ELIMINAR;
+terminal IGUAL, MENOR, MAYOR, MENORIGUAL, MAYORIGUAL, DIFERENTE; 
+terminal AND, OR;
+terminal IDENTIFICADOR, CADENA, NUMERO, VALORES; 
+terminal PUNTOCOMA, COMA, PARENTESISIZQ, PARENTESISDER;
+
+//terminal ERRORR;
+
+
+/* no terminales */
+non terminal consulta, seleccion, insertar, actualizar, eliminar;
+non terminal lista_campos, condiciones, lista_valores, asignaciones;
+non terminal operacion;
+
+precedence left AND, OR;
+
+/* inicio */
+start with consulta;
+
+/* la magia de producciones */
+consulta ::= seleccion
+     | insertar
+     | actualizar
+     | eliminar;
+
+seleccion ::= SELECCIONAR lista_campos EN IDENTIFICADOR condiciones PUNTOCOMA;
+
+insertar ::= INSERTAR EN IDENTIFICADOR lista_campos VALORES lista_valores PUNTOCOMA
+     | INSERTAR EN IDENTIFICADOR VALORES lista_valores PUNTOCOMA;
+
+actualizar ::= ACTUALIZAR EN IDENTIFICADOR ASIGNAR asignaciones condiciones PUNTOCOMA
+      | ACTUALIZAR EN IDENTIFICADOR ASIGNAR asignaciones PUNTOCOMA;
+
+eliminar ::= ELIMINAR EN IDENTIFICADOR condiciones PUNTOCOMA
+     | ELIMINAR EN IDENTIFICADOR PUNTOCOMA;
+
+lista_campos ::= IDENTIFICADOR
+       | IDENTIFICADOR COMA lista_campos;
+
+lista_valores ::= CADENA
+        | NUMERO
+        | CADENA COMA lista_valores
+        | NUMERO COMA lista_valores;
+
+asignaciones ::= IDENTIFICADOR IGUAL CADENA
+        | IDENTIFICADOR IGUAL NUMERO
+        | IDENTIFICADOR IGUAL CADENA COMA asignaciones
+        | IDENTIFICADOR IGUAL NUMERO COMA asignaciones;
+
+condiciones ::= IDENTIFICADOR operacion CADENA
+       | IDENTIFICADOR operacion NUMERO
+       | condiciones AND condiciones
+       | condiciones OR condiciones;
+
+operacion ::= IGUAL
+      | MENOR
+      | MAYOR
+      | MENORIGUAL
+      | MAYORIGUAL
+      | DIFERENTE;
