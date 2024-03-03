@@ -6,7 +6,7 @@
 package Analizadores;
 
 /** CUP generated class containing symbol constants. */
-public class Simbolos {
+public class sym {
   /* terminals */
   public static final int AND = 15;
   public static final int MENOR = 10;

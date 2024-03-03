@@ -1,12 +1,15 @@
 package Analizadores;
 
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java_cup.runtime.Scanner;
 
 public class Analizador {
     private AnalizadorLexico lexico;
-   private Sintactico sintactico;
+    private Sintactico sintactico;
+   
+   //excepcion para abrir el archivo
 public Analizador() throws FileNotFoundException {
     this.lexico = new AnalizadorLexico(new FileReader("archivo.cvs")); 
     this.sintactico = new Sintactico((Scanner) lexico);
@@ -14,11 +17,12 @@ public Analizador() throws FileNotFoundException {
 
   public void analizar() {
     try {
+        //parse analiza el texto y la hace objeto
      sintactico.parse();
-      //ejecutar lógica de consultas SQL sobre CSV
+      //ejecutar logica del sql en los archvoos cvs
       System.out.println("Análisis realizado con éxito");
     } catch (Exception e) {
-      //manejar error sintáctico  
+      //manejar error sintactico  
       System.out.println("Error de análisis: " + e.getMessage());
     }
   }

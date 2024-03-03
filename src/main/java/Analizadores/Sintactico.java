@@ -14,7 +14,7 @@ import java_cup.runtime.XMLElement;
 public class Sintactico extends java_cup.runtime.lr_parser {
 
  public final Class getSymbolContainer() {
-    return Simbolos.class;
+    return sym.class;
 }
 
   /** Default constructor. */
@@ -60,7 +60,7 @@ public class Sintactico extends java_cup.runtime.lr_parser {
     "\016\030\017\031\020\033\001\002\000\010\021\023\022" +
     "\024\027\025\001\002\000\004\023\021\001\002\000\004" +
     "\023\021\001\002\000\004\002\ufffc\001\002\000\010\021" +
-    "\uffe8\022\uffe8\027\uffe8\001\002\000\010\021\uffe9\022\uffe9" +
+    "\uffe8\022\uffe8\027\uffe8\001\002\000\010\021\uffe9\022\024" +
     "\027\uffe9\001\002\000\006\024\uffe4\025\uffe4\001\002\000" +
     "\006\024\uffe3\025\uffe3\001\002\000\006\024\uffe7\025\uffe7" +
     "\001\002\000\006\024\uffe2\025\uffe2\001\002\000\006\024" +

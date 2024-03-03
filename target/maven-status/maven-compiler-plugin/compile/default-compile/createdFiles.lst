@@ -1,10 +1,10 @@
 Front/Practica1compi1.class
 Analizadores/Sintactico$CUP$Sintactico$actions.class
+Analizadores/Analizador.class
+Analizadores/Symbol.class
+Analizadores/AnalizadorLexico.class
 Analizadores/AnalizadorLexico$Symbol.class
 Front/Interfaz$1.class
 Front/Interfaz.class
-Analizadores/Analizador.class
 Analizadores/Sintactico.class
-Analizadores/Symbol.class
-Analizadores/AnalizadorLexico.class
 Analizadores/Simbolos.class
