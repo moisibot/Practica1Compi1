@@ -2,22 +2,37 @@ package Analizadores;
 
 import java_cup.runtime.*;
 
-/* si terminales */
+parser code
+{:
+
+	private Symbol s;
+	
+	public void syntax_error(Symbol s){
+	this.s = s;
+  }
+
+	public Symbol getS(){
+		return this.s;	
+}
+:};
+
+/* si quisieron ser terminales */
 terminal SELECCIONAR, EN, FILTRAR, INSERTAR, ACTUALIZAR, ASIGNAR, ELIMINAR;
 terminal IGUAL, MENOR, MAYOR, MENORIGUAL, MAYORIGUAL, DIFERENTE;
 terminal AND, OR;
 terminal IDENTIFICADOR, CADENA, NUMERO, VALORES;
 terminal PUNTOCOMA, COMA, PARENTESISABIERTO, PARENTESISCERRADO;
 
-/* no terminales */
+/* no quieren ser terminales */
 non terminal consulta, seleccion, insertar, actualizar, eliminar;
 non terminal lista_campos, condiciones, lista_valores, asignaciones;
 non terminal operacion;
 
+/*orden jerargico que me daba error  */
 precedence left AND;
 precedence left OR;
 
-/* inicio */
+/* inicio de consultas */
 start with consulta;
 
 /* la magia de las producciones */

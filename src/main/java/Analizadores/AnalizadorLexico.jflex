@@ -11,7 +11,10 @@ import java_cup.runtime.*;
 %column
 %cup
 %unicode
-
+%{
+  
+   public String lexico;
+%}
 %{
   
     private Symbol symbol(int type, String lexema) {
@@ -29,6 +32,7 @@ import java_cup.runtime.*;
 "INSERTAR"      { return symbol(sym.INSERTAR,yytext()); }  
 "ASIGNAR"       { return symbol(sym.ASIGNAR,yytext()); }
 "ELIMINAR"      { return symbol(sym.ELIMINAR,yytext()); }
+"ACTUALIZAR" { return symbol(sym.ACTUALIZAR,yytext()); }
 
 "="             { return symbol(sym.IGUAL,yytext()); }
 "<"             { return symbol(sym.MENOR,yytext()); }
