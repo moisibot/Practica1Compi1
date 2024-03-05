@@ -4,6 +4,8 @@
  */
 package Front;
 
+import Analizadores.Archivo;
+import Analizadores.Proyecto;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -44,6 +46,10 @@ public class Interfaz extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ArbolMuestra = new javax.swing.JTree();
@@ -52,14 +58,21 @@ public class Interfaz extends javax.swing.JFrame {
         Editable = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         Ingreso = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        Ejecutar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        Controlador = new javax.swing.JTextArea();
+        ControladorLexico = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ControladorSintactico = new javax.swing.JTextArea();
         Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Abrir = new javax.swing.JMenuItem();
         Crear = new javax.swing.JMenuItem();
         Guardar = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        AbrirCarpeta = new javax.swing.JMenuItem();
+        CrearCarpeta = new javax.swing.JMenuItem();
+        GuardarCarpeta = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -73,6 +86,14 @@ public class Interfaz extends javax.swing.JFrame {
         jCheckBoxMenuItem2.setSelected(true);
         jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
 
+        jMenu2.setText("File");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar1.add(jMenu3);
+
+        jMenuItem4.setText("jMenuItem4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(ArbolMuestra);
@@ -85,55 +106,77 @@ public class Interfaz extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(Ingreso);
 
-        jButton1.setText("Ejecutar");
+        Ejecutar.setText("Ejecutar");
+        Ejecutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EjecutarActionPerformed(evt);
+            }
+        });
 
-        Controlador.setColumns(20);
-        Controlador.setRows(5);
-        jScrollPane4.setViewportView(Controlador);
+        ControladorLexico.setColumns(20);
+        ControladorLexico.setRows(5);
+        jScrollPane4.setViewportView(ControladorLexico);
+
+        jButton2.setText("Analizar");
+
+        ControladorSintactico.setColumns(20);
+        ControladorSintactico.setRows(5);
+        jScrollPane5.setViewportView(ControladorSintactico);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3)
                             .addComponent(Ventanas, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE))
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                            .addComponent(jScrollPane5))
+                        .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(402, 402, 402)
-                        .addComponent(jButton1)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGap(283, 283, 283)
+                        .addComponent(Ejecutar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(165, 165, 165))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 59, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Ventanas, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Ventanas, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Ejecutar)
+                    .addComponent(jButton2))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jMenu1.setText("Opciones");
+        jMenu1.setText("Opciones Archivo");
 
-        Abrir.setText("Abrir Proyecto");
+        Abrir.setText("Abrir Archivo");
         Abrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AbrirActionPerformed(evt);
@@ -141,7 +184,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jMenu1.add(Abrir);
 
-        Crear.setText("Nuevo Proyecto");
+        Crear.setText("Nuevo Archivo");
         Crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrearActionPerformed(evt);
@@ -149,7 +192,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jMenu1.add(Crear);
 
-        Guardar.setText("Guardar Proyecto");
+        Guardar.setText("Guardar Archivo");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GuardarActionPerformed(evt);
@@ -158,6 +201,34 @@ public class Interfaz extends javax.swing.JFrame {
         jMenu1.add(Guardar);
 
         Menu.add(jMenu1);
+
+        jMenu4.setText("Opciones Carpeta");
+
+        AbrirCarpeta.setText("Abrir Carpeta");
+        AbrirCarpeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbrirCarpetaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(AbrirCarpeta);
+
+        CrearCarpeta.setText("Nueva Carpeta");
+        CrearCarpeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearCarpetaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(CrearCarpeta);
+
+        GuardarCarpeta.setText("Guardar Carpeta");
+        GuardarCarpeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarCarpetaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(GuardarCarpeta);
+
+        Menu.add(jMenu4);
 
         setJMenuBar(Menu);
 
@@ -177,6 +248,13 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
+    
+    
+    
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
         JTextArea editable = new JTextArea();
@@ -189,11 +267,12 @@ public class Interfaz extends javax.swing.JFrame {
         File archivoCsv = fileChooser.getSelectedFile();
         String rutaArchivo = archivoCsv.getAbsolutePath();
         try {
-            // Obtener el contenido del JTextArea y guardarlo en el archivo CSV
+        
+             //jala lo que tiene Editable y lo guarda como csc
             String contenido = editable.getText();
             guardarComoCSV(contenido, rutaArchivo);
         } catch (Exception ex) {
-            // Manejar excepción
+         //manejo de errores del archivo 
             JOptionPane.showMessageDialog(this, "Error al guardar el archivo CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -229,20 +308,91 @@ public class Interfaz extends javax.swing.JFrame {
         File archivoCsv = fileChooser.getSelectedFile();
         String rutaArchivo = archivoCsv.getAbsolutePath();
         try {
-            // Obtener el contenido del JTextArea y guardarlo en el archivo CSV
+
+            //jala lo que tiene Editable y lo guarda como csc
             String contenido = editable.getText();
             guardarComoCSV(contenido, rutaArchivo);
         } catch (Exception ex) {
-            // Manejar excepción
+           
+            //manejo de errores del archivo 
             JOptionPane.showMessageDialog(this, "Error al guardar el archivo CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     }//GEN-LAST:event_CrearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
 
+    private void EjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EjecutarActionPerformed
+        // TODO add your handling code here:
+        //se pasa el contenido de abajo para arriba
+        String contenido = Ingreso.getText();
+        Editable.append(contenido);
+    }//GEN-LAST:event_EjecutarActionPerformed
+
+    private void AbrirCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirCarpetaActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File carpetaProyecto = fileChooser.getSelectedFile();
+        // Leer el archivo .ide en la ubicación seleccionada
+        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
+        if (archivoIDE.exists()) {
+            // Realizar las operaciones necesarias para cargar el proyecto desde el archivo .ide
+         //   cargarProyecto(archivoIDE);
+        } else {
+            JOptionPane.showMessageDialog(this, "El archivo .ide no existe en la ubicación seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_AbrirCarpetaActionPerformed
+
+    private void CrearCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCarpetaActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = fileChooser.showSaveDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File carpetaProyecto = fileChooser.getSelectedFile();
+        // Crear el archivo .ide en la ubicación seleccionada
+        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
+        try {
+            archivoIDE.createNewFile();
+            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
+            // Guardar el proyecto en el archivo .ide
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al crear el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_CrearCarpetaActionPerformed
+
+    private void GuardarCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCarpetaActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = fileChooser.showSaveDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File carpetaProyecto = fileChooser.getSelectedFile();
+        // Crear el archivo .ide en la ubicación seleccionada
+        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
+        try {
+            archivoIDE.createNewFile();
+            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
+            // Guardar el proyecto en el archivo .ide
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al guardar el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_GuardarCarpetaActionPerformed
+       
+    
+    
+    
+    //metodos que se usan para completar la accion de botones o paneles de texto
+    //SOLO PARA ARCHIVOS INDIVIDUALES
+    
     private void guardarComoCSV(String contenido, String rutaArchivo) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
         writer.write(contenido);
@@ -262,27 +412,81 @@ public class Interfaz extends javax.swing.JFrame {
     return contenido.toString();
 }
 
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //LO MISMO DE ARRIBA PERO PARA CARPETAS
+    private void crearProyecto() {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = fileChooser.showSaveDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File carpetaProyecto = fileChooser.getSelectedFile();
+        // Crear el archivo .ide en la ubicación seleccionada
+        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
+        try {
+            archivoIDE.createNewFile();
+            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
+            // Guardar el proyecto en el archivo .ide
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al crear el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+    private void abrirProyecto() {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File carpetaProyecto = fileChooser.getSelectedFile();
+        // Leer el archivo .ide en la ubicación seleccionada
+        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
+        if (archivoIDE.exists()) {
+            // Realizar las operaciones necesarias para cargar el proyecto desde el archivo .ide
+        } else {
+            JOptionPane.showMessageDialog(this, "El archivo .ide no existe en la ubicación seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+private void cargarProyecto() {
+
+}
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
+    private javax.swing.JMenuItem AbrirCarpeta;
     private javax.swing.JTree ArbolMuestra;
-    private javax.swing.JTextArea Controlador;
+    private javax.swing.JTextArea ControladorLexico;
+    private javax.swing.JTextArea ControladorSintactico;
     private javax.swing.JMenuItem Crear;
+    private javax.swing.JMenuItem CrearCarpeta;
     public static javax.swing.JTextArea Editable;
+    private javax.swing.JButton Ejecutar;
     private javax.swing.JMenuItem Guardar;
+    private javax.swing.JMenuItem GuardarCarpeta;
     private javax.swing.JTextPane Ingreso;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JTabbedPane Ventanas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     // End of variables declaration//GEN-END:variables
 }
