@@ -4,9 +4,9 @@
  */
 package Front;
 
-import Analizadores.Archivo;
+import Carpetas.Archivo;
 import Analizadores.Funciones;
-import Analizadores.Proyecto;
+import Carpetas.Proyecto;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -300,6 +302,8 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al abrir el archivo CSV: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+  /* Funciones funcion = new Funciones ();
+   funcion.Seleccion();*/
     }//GEN-LAST:event_AbrirActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
@@ -342,16 +346,14 @@ public class Interfaz extends javax.swing.JFrame {
     int result = fileChooser.showOpenDialog(this);
     if (result == JFileChooser.APPROVE_OPTION) {
         File carpetaProyecto = fileChooser.getSelectedFile();
-        // Leer el archivo .ide en la ubicación seleccionada
         File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
-        if (archivoIDE.exists()) {
-            // Realizar las operaciones necesarias para cargar el proyecto desde el archivo .ide
-         //   cargarProyecto(archivoIDE);
+        if (archivoIDE.exists()) {          
         } else {
             JOptionPane.showMessageDialog(this, "El archivo .ide no existe en la ubicación seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     }//GEN-LAST:event_AbrirCarpetaActionPerformed
+
 
     private void CrearCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCarpetaActionPerformed
         // TODO add your handling code here:
@@ -360,12 +362,9 @@ public class Interfaz extends javax.swing.JFrame {
     int result = fileChooser.showSaveDialog(this);
     if (result == JFileChooser.APPROVE_OPTION) {
         File carpetaProyecto = fileChooser.getSelectedFile();
-        // Crear el archivo .ide en la ubicación seleccionada
         File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
         try {
             archivoIDE.createNewFile();
-            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
-            // Guardar el proyecto en el archivo .ide
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al crear el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -380,12 +379,9 @@ public class Interfaz extends javax.swing.JFrame {
     int result = fileChooser.showSaveDialog(this);
     if (result == JFileChooser.APPROVE_OPTION) {
         File carpetaProyecto = fileChooser.getSelectedFile();
-        // Crear el archivo .ide en la ubicación seleccionada
         File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
         try {
             archivoIDE.createNewFile();
-            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
-            // Guardar el proyecto en el archivo .ide
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al guardar el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -395,10 +391,14 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
         // TODO add your handling code here:
-        Interfaz interfaz = new Interfaz();
-        Funciones funciones = new Funciones();
-        funciones.analizar();
-        funciones.AnalizadorSintactico();
+    Funciones funciones = new Funciones();
+    funciones.analizar();
+    try{
+    funciones.AnalizadorSintactico();
+    
+    }catch(Exception ex){
+        ex.printStackTrace();
+    }
     }//GEN-LAST:event_AnalizarActionPerformed
        
     
@@ -426,46 +426,6 @@ public class Interfaz extends javax.swing.JFrame {
     return contenido.toString();
 }
 
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //LO MISMO DE ARRIBA PERO PARA CARPETAS
-    private void crearProyecto() {
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    int result = fileChooser.showSaveDialog(this);
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File carpetaProyecto = fileChooser.getSelectedFile();
-        // Crear el archivo .ide en la ubicación seleccionada
-        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
-        try {
-            archivoIDE.createNewFile();
-            // Realizar las operaciones necesarias para agregar archivos y carpetas al proyecto
-            // Guardar el proyecto en el archivo .ide
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al crear el proyecto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-}
-    private void abrirProyecto() {
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    int result = fileChooser.showOpenDialog(this);
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File carpetaProyecto = fileChooser.getSelectedFile();
-        // Leer el archivo .ide en la ubicación seleccionada
-        File archivoIDE = new File(carpetaProyecto, "proyecto.ide");
-        if (archivoIDE.exists()) {
-            // Realizar las operaciones necesarias para cargar el proyecto desde el archivo .ide
-        } else {
-            JOptionPane.showMessageDialog(this, "El archivo .ide no existe en la ubicación seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-}
-private void cargarProyecto() {
-
-}
     
     
     
