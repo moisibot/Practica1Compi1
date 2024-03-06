@@ -5,6 +5,7 @@
 package Front;
 
 import Analizadores.Archivo;
+import Analizadores.Funciones;
 import Analizadores.Proyecto;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -61,7 +62,7 @@ public class Interfaz extends javax.swing.JFrame {
         Ejecutar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         ControladorLexico = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        Analizar = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         ControladorSintactico = new javax.swing.JTextArea();
         Menu = new javax.swing.JMenuBar();
@@ -117,7 +118,12 @@ public class Interfaz extends javax.swing.JFrame {
         ControladorLexico.setRows(5);
         jScrollPane4.setViewportView(ControladorLexico);
 
-        jButton2.setText("Analizar");
+        Analizar.setText("Analizar");
+        Analizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnalizarActionPerformed(evt);
+            }
+        });
 
         ControladorSintactico.setColumns(20);
         ControladorSintactico.setRows(5);
@@ -145,7 +151,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(283, 283, 283)
                         .addComponent(Ejecutar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(Analizar)
                         .addGap(165, 165, 165))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,7 +170,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ejecutar)
-                    .addComponent(jButton2))
+                    .addComponent(Analizar))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(53, Short.MAX_VALUE)
@@ -386,6 +392,14 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_GuardarCarpetaActionPerformed
+
+    private void AnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarActionPerformed
+        // TODO add your handling code here:
+        Interfaz interfaz = new Interfaz();
+        Funciones funciones = new Funciones();
+        funciones.analizar();
+        funciones.AnalizadorSintactico();
+    }//GEN-LAST:event_AnalizarActionPerformed
        
     
     
@@ -458,19 +472,19 @@ private void cargarProyecto() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JMenuItem AbrirCarpeta;
+    private javax.swing.JButton Analizar;
     private javax.swing.JTree ArbolMuestra;
-    private javax.swing.JTextArea ControladorLexico;
-    private javax.swing.JTextArea ControladorSintactico;
+    public static javax.swing.JTextArea ControladorLexico;
+    public static javax.swing.JTextArea ControladorSintactico;
     private javax.swing.JMenuItem Crear;
     private javax.swing.JMenuItem CrearCarpeta;
     public static javax.swing.JTextArea Editable;
     private javax.swing.JButton Ejecutar;
     private javax.swing.JMenuItem Guardar;
     private javax.swing.JMenuItem GuardarCarpeta;
-    private javax.swing.JTextPane Ingreso;
+    public static javax.swing.JTextPane Ingreso;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JTabbedPane Ventanas;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JMenu jMenu1;

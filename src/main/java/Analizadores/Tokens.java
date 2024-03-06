@@ -8,6 +8,29 @@ package Analizadores;
  *
  * @author moisibot
  */
-public class Tokens {
+public enum Tokens {
+    Linea,
+    SELECCIONAR,
+    EN,
+    FILTRAR,
+    INSERTAR,
+    ASIGNAR,
+    ELIMINAR,
+    IGUAL,
+    MENOR,
+    MAYOR,
+    MENORIGUAL,
+    MAYORIGUAL,
+    DIFERENTE,
+    AND,
+    OR,
+    IDENTIFICADOR,
+    NUMERO,
+    CADENA,
+    PUNTOCOMA,
+    COMA,
+    PARENTESISABIERTO,
+    PARENTESISCERRADO,
+    ACTUALIZAR
     
 }
